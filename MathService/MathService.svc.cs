@@ -10,24 +10,16 @@ namespace MathService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
-    public class Service1 : IService1
+    public class MathService : IMathService
     {
-        public string GetData(int value)
+        public int Add(MyNumbers obj)
         {
-            return string.Format("You entered: {0}", value);
+            return(obj.Number1 + obj.Number2);
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public int Subtract(MyNumbers obj)
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            return(obj.Number1-obj.Number2);
         }
     }
 }

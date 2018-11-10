@@ -10,14 +10,14 @@ namespace MathService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
-    public interface IService1
+    public interface IMathService
     {
+        [OperationContract]
+        int Add(MyNumbers obj);
 
         [OperationContract]
-        string GetData(int value);
+        int Subtract(MyNumbers obj);
 
-        [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: Add your service operations here
     }
@@ -25,23 +25,11 @@ namespace MathService
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     [DataContract]
-    public class CompositeType
+    public class MyNumbers
     {
-        bool boolValue = true;
-        string stringValue = "Hello ";
-
         [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
-
+        public int Number1 { get; set; }
         [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
+        public int Number2 { get; set; }
     }
 }
